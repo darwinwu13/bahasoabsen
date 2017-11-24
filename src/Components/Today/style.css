@@ -1,0 +1,48 @@
+.date {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.time {
+    position: relative;
+    margin-top: 20px;
+    line-height: 1;
+    color: #4AA3F2;
+    font-size: 64px;
+    font-weight: 300;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+}
+
+.second {
+    margin-left: 5px;
+    font-size: 20px;
+    position: absolute;
+    right: 50%;
+    bottom: 6px;
+    margin-right: -106px;
+}
+
+.absen {
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.absen-detail {
+    padding: 10px 30px;
+}
+
+.absen-detail:first-child {
+    border-right: 1px solid black;
+}
+
+.late .absen-detail:first-child .absen-time {
+    color: #E54848;
+}
+
+.on-leave .absen-detail:first-child .absen-time {
+    color: #FFC000;
+}

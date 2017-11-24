@@ -1,0 +1,70 @@
+.history {
+    flex: 1;
+}
+
+.table {
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.thead {
+    font-size: 12px;
+    font-weight: 700;
+    vertical-align: top;
+}
+
+.thead td {
+    border-bottom: 1px solid #C2C2C2;
+}
+
+.tbody {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+td {
+    padding: 5px 0;
+}
+
+.even {
+    background-color: #EAEAEA;
+}
+
+.on-leave {
+    background-color: #FFE03B;
+    cursor: pointer;
+}
+
+.detail {
+    background-color: #FFF09E;
+}
+
+.late {
+    color: #E54848;
+    font-weight: 700;
+}
+
+.center {
+    text-align: center;
+}
+
+.padding {
+    width: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .thead td:first-child,
+    .thead td:last-child {
+        border: none;
+    }
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 10px 0;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}

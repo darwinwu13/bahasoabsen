@@ -1,0 +1,19 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #FFF;
+    color: #4F4F4F;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        background-color: #F5F5F5;
+    }
+}
