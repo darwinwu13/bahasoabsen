@@ -1,11 +1,12 @@
 import React from 'react'
 import * as firebase from 'firebase'
+import {Link} from 'react-router-dom'
 
 import style from './style.css'
 
 const Logout = () => (
     <section className={style.container}>
-        <button className={style.btn} onClick={() => {firebase.auth().signOut()}}>LOGOUT</button>
+        <Link className={style.btn} to="/login" onClick={() => {firebase.auth().signOut()}}>LOGOUT</Link>
     </section>
 )
 

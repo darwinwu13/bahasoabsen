@@ -4,18 +4,6 @@ import * as firebase from 'firebase'
 import style from '../Styles/login.css'
 
 class Login extends React.Component {
-    componentWillMount = () => {
-        navigator.geolocation.getCurrentPosition(pos => {
-            console.log(pos)
-        }, error => {
-            console.log(error)
-        }, {
-            enableHighAccuracy: true,
-            timeout: 1000,
-            maximumAge: 0
-        })
-    }
-
     login = () => {
         const provider = new firebase.auth.GoogleAuthProvider()
 

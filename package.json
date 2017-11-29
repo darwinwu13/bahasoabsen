@@ -7,7 +7,9 @@
     "clean": "rimraf build",
     "build": "npm run clean && webpack -p --config webpack.config.prod.js",
     "watch": "webpack-dev-server",
-    "deploy": "npm run build && firebase deploy"
+    "deploy": "npm run build && firebase deploy",
+    "serve": "firebase serve -p 8080",
+    "dev": "webpack"
   },
   "keywords": [],
   "author": "",

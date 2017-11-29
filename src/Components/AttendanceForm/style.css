@@ -10,6 +10,7 @@
 }
 
 .btn-container {
+    padding: 0 10px;
     text-align: center;
 }
 
@@ -40,6 +41,7 @@
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     resize: none;
 }
@@ -58,4 +60,14 @@
     bottom: 0;
     background: rgba(0, 0, 0, .2);
     z-index: 1;
+}
+
+@media (max-width: 320px)  {
+    .textarea {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
 }

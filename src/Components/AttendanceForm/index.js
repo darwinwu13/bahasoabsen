@@ -3,7 +3,6 @@ import React from 'react'
 import Quote from '../Quote'
 import Today from '../Today'
 
-import {inBahaso} from '../../Utils/location'
 import {isEmpty} from '../../Utils/object'
 import {getStringClock} from '../../Utils/time'
 import quotes from '../../Utils/quotes'
@@ -13,15 +12,7 @@ import style from './style.css'
 class AttendanceForm extends React.Component {
     state = {
         quote: null,
-        note: '',
-        inBahaso: false
-    }
-
-    componentWillMount() {
-        inBahaso(status => {
-            console.log('status: ', status)
-            this.setState({inBahaso: status})
-        })
+        note: ''
     }
 
     onClick = () => {
@@ -56,18 +47,19 @@ class AttendanceForm extends React.Component {
     }
 
     renderNote = () => {
-        const {quote, inBahaso, note} = this.state
+        const {present} = this.props
+        const {quote, note} = this.state
         const isWorking = this.getWorkingStatus()
 
         if (quote) return
-        if (inBahaso) return
+        if (present) return
         if (isWorking) return
 
         return <div>
             <textarea
                 className={style.textarea}
                 rows="4"
-                placeholder="Isi keterangan kalau kamu izin/sakit..."
+                placeholder="Isi keterangan izin/sakit..."
                 value={note}
                 onChange={this.onChange}>
             </textarea>
@@ -80,20 +72,20 @@ class AttendanceForm extends React.Component {
     }
 
     render() {
-        const {quote, inBahaso} = this.state
-        const {workTime} = this.props
+        const {quote} = this.state
+        const {present, workTime} = this.props
         const isWorking = this.getWorkingStatus()
 
         return (
             <section>
-                <div className={style.container} style={quote ? {height: '450px'} : (!inBahaso && !isWorking) ? {height: '400px'} : {}}>
+                <div className={style.container} style={quote ? {height: '450px'} : (!present && !isWorking) ? {height: '400px'} : {}}>
                     <Today workTime={workTime}/>
                     {this.renderQuote()}
                     {this.renderNote()}
                 </div>
                 <div className={style.btnContainer}>
-                    <button className={style.btn} onClick={this.onClick} disabled={isEmpty(workTime) || !inBahaso && !isWorking && !this.state.note}>
-                    {isWorking ? 'pulang' : inBahaso ? 'masuk' : 'i z i n'}
+                    <button className={style.btn} onClick={this.onClick} disabled={isEmpty(workTime) || !present && !isWorking && !this.state.note}>
+                    {isWorking ? 'pulang' : present ? 'masuk' : 'i z i n'}
                     </button>
                 </div>
             </section>

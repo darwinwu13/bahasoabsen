@@ -1,4 +1,5 @@
 .header {
+    display: flex;
     position: relative;
     z-index: 9999;
     color: white;
@@ -6,6 +7,10 @@
     padding: 10px;
     height: 70px;
     box-shadow: 0 4px 8px rgba(74, 74, 74, .25);
+}
+
+.main {
+    flex: 1;
 }
 
 .photo {

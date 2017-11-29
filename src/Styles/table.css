@@ -60,11 +60,3 @@ td {
         border: none;
     }
 }
-
-select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 10px 0;
-    border: 1px solid #ddd;
-    font-size: 16px;
-}

@@ -6,7 +6,7 @@ import Footer from '../Components/Footer'
 import AttendanceForm from '../Components/AttendanceForm'
 import AttendanceHistory from '../Components/AttendanceHistory'
 import Logout from '../Components/Logout'
-import {getStringDate} from '../Utils/time'
+import {getStringDate, getDateWithFormat} from '../Utils/time'
 
 import style from '../Styles/home.css'
 
@@ -36,12 +36,24 @@ class Home extends React.Component {
             this.setState({
                 clockReady: true
             })
+        }).catch(error => {
+            console.log(error.message)
         })
 
         this.db.ref(`users_absen/${this.uid}`).limitToLast(30).once('value').then(data => {
-            this.setState({
-                history: data.val()
-            })
+            const history = data.val()
+
+            try {
+                Object.keys(history).forEach(key => {
+                    history[key].desc = getDateWithFormat(key)
+                })
+
+                this.setState({history})
+            } catch(exception) {
+                this.setState({history: {}})
+            }
+        }).catch(error => {
+            console.log(error.message)
         })
     }
 
@@ -58,6 +70,7 @@ class Home extends React.Component {
         const history = {...this.state.history}
         if(!history[this.today]) history[this.today] = {}
         history[this.today] = workTime
+        history[this.today].desc = getDateWithFormat(this.today)
 
         // update data
         return this.db.ref().update(updates).then(() => {
@@ -71,18 +84,18 @@ class Home extends React.Component {
     }
 
     render() {
-        const {user: {displayName, photoURL}} = this.props
+        const {user: {displayName, photoURL}, present} = this.props
         const {workTime, history} = this.state
 
         return (
             <div>
                 <Header name={displayName} photo={photoURL}/>
                 <main className={style.container}>
-                    <AttendanceForm workTime={workTime} absen={this.absen}/>
-                    <AttendanceHistory data={history}/>
+                    <AttendanceForm workTime={workTime} absen={this.absen} present={present}/>
+                    <AttendanceHistory data={history} type={'date'}/>
                     <Logout/>
                 </main>
-                <Footer year={(new Date()).getFullYear()}/>
+                <Footer/>
             </div>
         )
     }
