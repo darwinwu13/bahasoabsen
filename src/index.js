@@ -23,7 +23,7 @@ const devConfig = {
     messagingSenderId: "134825814680"
 }
 
-firebase.initializeApp(devConfig)
+firebase.initializeApp(prodConfig)
 
 ReactDOM.render(
     <BrowserRouter>
