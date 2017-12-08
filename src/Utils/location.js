@@ -1,6 +1,6 @@
-export const inBahaso = (callback) => {
+export const watchPosition = callback => {
     if('geolocation' in navigator) {
-        navigator.geolocation.watchPosition(
+        return navigator.geolocation.watchPosition(
             pos => {
                 const coor = {
                     lat: pos.coords.latitude,
@@ -9,7 +9,7 @@ export const inBahaso = (callback) => {
 
                 const dist = distance(coor, bahasoCoord)
 
-                if(dist <= 500)
+                if(dist <= 1000)
                     callback(true)
                 else
                     callback(false)
@@ -25,6 +25,13 @@ export const inBahaso = (callback) => {
         )
     } else {
         callback(false)
+        return -1
+    }
+}
+
+export const clearPosition = id => {
+    if('geolocation' in navigator) {
+        navigator.geolocation.clearWatch(id)
     }
 }
 

@@ -3,7 +3,6 @@ import React from 'react'
 import Quote from '../Quote'
 import Today from '../Today'
 
-import {isEmpty} from '../../Utils/object'
 import {getStringClock} from '../../Utils/time'
 import quotes from '../../Utils/quotes'
 
@@ -16,9 +15,9 @@ class AttendanceForm extends React.Component {
     }
 
     onClick = () => {
-        const type = !!this.props.workTime.clockIn ? 'clockOut' : 'clockIn'
-        const time = getStringClock()
         const isWorking = this.getWorkingStatus()
+        const type = isWorking ? 'clockOut' : 'clockIn'
+        const time = getStringClock()
 
         this.props.absen(type, time, this.state.note).then(() => {
             const quote = quotes[Math.floor((Math.random() * quotes.length))]
@@ -68,6 +67,8 @@ class AttendanceForm extends React.Component {
 
     getWorkingStatus = () => {
         const {workTime} = this.props
+
+        if(!workTime) return false
         return !!workTime.clockIn
     }
 
@@ -84,7 +85,7 @@ class AttendanceForm extends React.Component {
                     {this.renderNote()}
                 </div>
                 <div className={style.btnContainer}>
-                    <button className={style.btn} onClick={this.onClick} disabled={isEmpty(workTime) || !present && !isWorking && !this.state.note}>
+                    <button className={style.btn} onClick={this.onClick} disabled={!workTime || (!present && !isWorking && !this.state.note)}>
                     {isWorking ? 'pulang' : present ? 'masuk' : 'i z i n'}
                     </button>
                 </div>

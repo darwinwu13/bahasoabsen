@@ -7,10 +7,9 @@ import History from './Pages/History'
 import Splash from './Pages/Splash'
 import UserRoute from './Routes/UserRoute'
 import GuestRoute from './Routes/GuestRoute'
-import {inBahaso} from './Utils/location'
 
 class App extends React.Component {
-    state = {user: null, loading: true, present: false}
+    state = {user: null, loading: true}
 
     componentWillMount = () => {
         firebase.auth().onAuthStateChanged(user => {
@@ -25,11 +24,6 @@ class App extends React.Component {
             } else
                 this.setState({user: {}, loading: false})
         })
-
-        inBahaso(status => {
-            if(status !== this.state.present)
-                this.setState({present: status})
-        })
     }
 
     render = () => {
@@ -37,8 +31,8 @@ class App extends React.Component {
 
         return (
             <div>
-                <UserRoute exact path="/" component={() => <Home user={this.state.user} present={this.state.present}/>}/>
-                <UserRoute exact path="/home" component={() => <Home user={this.state.user} present={this.state.present}/>}/>
+                <UserRoute exact path="/" component={() => <Home user={this.state.user}/>}/>
+                <UserRoute exact path="/home" component={() => <Home user={this.state.user}/>}/>
                 <UserRoute exact path="/history" component={History}/>
                 <GuestRoute exact path="/login" component={Login}/>
             </div>

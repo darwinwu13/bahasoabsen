@@ -19,14 +19,16 @@ class Today extends React.Component {
     }
 
     getAttendanceStatus() {
-        const {clockIn, clockInNote} = this.props.workTime
+        const {workTime} = this.props
 
-        return `${style.absen} ${clockInNote ? style.onLeave : getLateCount(clockIn) > 0 ? style.late : ''}`
+        if(!workTime || !workTime.clockIn) return style.absen
+
+        return `${style.absen} ${workTime.clockInNote ? style.onLeave : getLateCount(workTime.clockIn) > 0 ? style.late : ''}`
     }
 
     render() {
         const now = new Date(this.state.now)
-        const {clockIn, clockOut} = this.props.workTime
+        const {workTime} = this.props
         const day = getDayName(now.getDay())
         const month = getMonthName(now.getMonth())
         const date = `${getDigitWithZero(now.getDate())} ${month} ${now.getFullYear()}`
@@ -46,11 +48,11 @@ class Today extends React.Component {
                 <div className={this.getAttendanceStatus()}>
                     <div className={style.absenDetail}>
                         MASUK<br/>
-                        <span className={style.absenTime}>{clockIn || '-'}</span>
+                        <span className={style.absenTime}>{workTime && workTime.clockIn || '-'}</span>
                     </div>
                     <div className={style.absenDetail}>
                         KELUAR<br/>
-                        <span className={style.absenTime}>{clockOut || '-'}</span>
+                        <span className={style.absenTime}>{workTime && workTime.clockOut || '-'}</span>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@ import AttendanceForm from '../Components/AttendanceForm'
 import AttendanceHistory from '../Components/AttendanceHistory'
 import Logout from '../Components/Logout'
 import {getStringDate, getDateWithFormat} from '../Utils/time'
+import {watchPosition, clearPosition} from '../Utils/location'
 
 import style from '../Styles/home.css'
 
@@ -15,46 +16,45 @@ class Home extends React.Component {
     db = firebase.database()
     uid = this.props.user.uid
     state = {
-        workTime: {
-            clockIn: '',
-            clockInNote: '',
-            clockOut: '',
-            clockOutNote: ''
-        },
-        clockReady: false,
+        workTime: null,
+        present: false,
         history: {}
     }
 
-    componentDidMount() {
-        this.db.ref(`absen/${this.today}/${this.uid}`).once('value').then(data => {
-            if(data.exists()) {
-                this.setState({
-                    workTime: data.val()
-                })
+    componentWillMount() {
+        this.watchId = watchPosition(status => {
+            if(status !== this.state.present) {
+                this.setState({present: status})
             }
-        }).then(() => {
-            this.setState({
-                clockReady: true
-            })
+        })
+    }
+
+    componentDidMount() {
+        this.db.ref(`absen/${this.today}/${this.uid}`).once('value').then(snapshot => {
+            const data = snapshot.val()
+            const workTime = data ? data : {}
+
+            this.setState({workTime})
         }).catch(error => {
             console.log(error.message)
         })
 
-        this.db.ref(`users_absen/${this.uid}`).limitToLast(30).once('value').then(data => {
-            const history = data.val()
+        this.db.ref(`users_absen/${this.uid}`).limitToLast(30).once('value').then(snapshot => {
+            const history = snapshot.val()
 
-            try {
+            if(history)
                 Object.keys(history).forEach(key => {
                     history[key].desc = getDateWithFormat(key)
                 })
 
-                this.setState({history})
-            } catch(exception) {
-                this.setState({history: {}})
-            }
+            this.setState({history})
         }).catch(error => {
             console.log(error.message)
         })
+    }
+
+    componentWillUnmount() {
+        if(this.watchId && this.watchId !== -1) clearPosition(this.watchId)
     }
 
     absen = (type, time, note) => {
@@ -84,8 +84,8 @@ class Home extends React.Component {
     }
 
     render() {
-        const {user: {displayName, photoURL}, present} = this.props
-        const {workTime, history} = this.state
+        const {user: {displayName, photoURL}} = this.props
+        const {workTime, history, clockReady, present} = this.state
 
         return (
             <div>
