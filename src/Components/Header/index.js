@@ -1,8 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 
 import style from './style.css'
-import kepo from '../../Images/kepo.svg'
 
 const Header = ({name, photo}) => (
     <header className={style.header}>
@@ -12,9 +10,6 @@ const Header = ({name, photo}) => (
             </div>
             <div className={style.greeting}>Welcome,</div>
             <div className={style.name}>{name}</div>
-        </div>
-        <div>
-            <Link to="/history"><img src={kepo}/></Link>
         </div>
     </header>
 )

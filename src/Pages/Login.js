@@ -1,6 +1,8 @@
 import React from 'react'
 import * as firebase from 'firebase'
 
+import { isValentine } from '../Utils/theme'
+
 import style from '../Styles/login.css'
 
 class Login extends React.Component {
@@ -20,11 +22,11 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className={style.container}>
+            <div className={style.container + ' ' + (isValentine() ? (' ' + style.valentine) : '')}>
                 <div>
-                    <div className={style.bahaso}>bahaso</div>
-                    <div className={style.absen}>ABSEN</div>
-                    <div><button className={style.btn} onClick={this.login}>Sign in with Google</button></div>
+                    <div className={style.bahaso + ' ' + (isValentine() ? (' ' + style.valentine) : '')}>bahaso</div>
+                    <div className={style.absen + ' ' + (isValentine() ? (' ' + style.valentine) : '')}>ABSEN</div>
+                    <div><button className={style.btn + ' ' + (isValentine() ? (' ' + style.valentine) : '')} onClick={this.login}>Sign in with Google</button></div>
                 </div>
             </div>
         )

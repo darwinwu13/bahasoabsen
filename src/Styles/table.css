@@ -29,7 +29,7 @@ td {
 }
 
 .even {
-    background-color: #EAEAEA;
+    background-color: rgba(0, 0, 0, .1);
 }
 
 .on-leave {
@@ -48,6 +48,14 @@ td {
 
 .center {
     text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.duration {
+    width: 70px;
 }
 
 .padding {

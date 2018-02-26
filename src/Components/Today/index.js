@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {getDigitWithZero, getDayName, getMonthName, getLateCount} from '../../Utils/time'
+import {getDigitWithZero, getDayName, getMonthName, getStringClock, getDuration} from '../../Utils/time'
 import style from './style.css'
 
 class Today extends React.Component {
@@ -23,7 +23,7 @@ class Today extends React.Component {
 
         if(!workTime || !workTime.clockIn) return style.absen
 
-        return `${style.absen} ${workTime.clockInNote ? style.onLeave : getLateCount(workTime.clockIn) > 0 ? style.late : ''}`
+        return `${style.absen} ${workTime.clockInNote ? style.onLeave : ''}`
     }
 
     render() {
@@ -34,16 +34,28 @@ class Today extends React.Component {
         const date = `${getDigitWithZero(now.getDate())} ${month} ${now.getFullYear()}`
         const time = `${getDigitWithZero(now.getHours())}:${getDigitWithZero(now.getMinutes())}`
         const second = getDigitWithZero(now.getSeconds())
+        let duration = ''
+
+        if(workTime) {
+            if(workTime.clockOut) {
+                duration = getDuration(workTime.clockIn, workTime.clockOut)
+            } else if(workTime.clockIn) {
+                duration = getDuration(workTime.clockIn, getStringClock())
+            }
+        }
 
         return (
             <div>
                 <div className={style.date}>
-                    <div>{day}</div>
-                    <div>{date}</div>
+                    <div>{ day }</div>
+                    <div>{ date }</div>
                 </div>
                 <div className={style.time}>
                     {time}
                     <span className={style.second}>{second}</span>
+                </div>
+                <div style={{fontWeight: '700'}}>
+                    {!duration || duration === '-' ? '-' : `( ${duration} )`}
                 </div>
                 <div className={this.getAttendanceStatus()}>
                     <div className={style.absenDetail}>

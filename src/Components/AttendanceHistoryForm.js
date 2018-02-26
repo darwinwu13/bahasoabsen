@@ -23,19 +23,17 @@ class AttendanceHistoryForm extends React.Component {
     }
 
     onChange = e => {
+        const data = this.state
+        data[e.target.name] = e.target.value
+
+        if(data.user === 'all')
+            this.props.onSubmit(data.user, `${data.year}${data.month}${data.date}`)
+        else
+            this.props.onSubmit(data.user, `${data.year}${data.month}`)
+
         this.setState({
             [e.target.name]: e.target.value
         })
-    }
-
-    onSubmit = e => {
-        e.preventDefault()
-        const {user, date, month, year} = this.state
-
-        if(user === 'all')
-            this.props.onSubmit(user, `${year}${month}${date}`)
-        else
-            this.props.onSubmit(user, `${year}${month}`)
     }
 
     renderUsers = () => {
@@ -56,7 +54,7 @@ class AttendanceHistoryForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
+            <section style={{marginTop: '60px'}}>
                 <div className={style.inputContainer}>
                     <select className={style.input} name="user" value={this.state.user} onChange={this.onChange}>{this.renderUsers()}</select>
                 </div>
@@ -113,10 +111,7 @@ class AttendanceHistoryForm extends React.Component {
                         <option value="2018">2018</option>
                     </select>
                 </div>
-                <div className={style.inputContainer}>
-                    <button className={style.button}>kepo-in</button>
-                </div>
-            </form>
+            </section>
         )
     }
 }

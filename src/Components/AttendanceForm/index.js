@@ -4,7 +4,7 @@ import Quote from '../Quote'
 import Today from '../Today'
 
 import {getStringClock} from '../../Utils/time'
-import quotes from '../../Utils/quotes'
+import { quotes } from '../../Utils/quotes'
 
 import style from './style.css'
 
@@ -79,7 +79,7 @@ class AttendanceForm extends React.Component {
 
         return (
             <section>
-                <div className={style.container} style={quote ? {height: '450px'} : (!present && !isWorking) ? {height: '400px'} : {}}>
+                <div className={style.container} style={quote ? {height: '470px'} : (!present && !isWorking) ? {height: '425px'} : {}}>
                     <Today workTime={workTime}/>
                     {this.renderQuote()}
                     {this.renderNote()}

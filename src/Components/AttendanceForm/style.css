@@ -2,21 +2,23 @@
     text-align: center;
     background-color: #FFF;
     box-shadow: 0 4px 4px rgba(194,194,194,.5);
-    margin-bottom: -42px;
     padding: 30px 10px 70px;
-    height: 320px;
+    height: 340px;
     -webkit-transition: all .3s;
     transition: all .3s;
 }
 
 .btn-container {
-    padding: 0 10px;
-    text-align: center;
+    position: relative;
 }
 
 .btn {
+    position: absolute;
+    top: 0;
+    left: 50%;
     outline: none;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     padding: 20px 0;
     color: #FFF;
     background-color: #4AA3F2;
@@ -28,11 +30,13 @@
     font-weight: 300;
     text-transform: uppercase;
     box-shadow: 0 4px 8px rgba(74, 74, 74, .25);
+    transform: translate(-50%, -50%);
 }
 
 .btn:disabled {
     color: #E0E0E0;
     background: #EEEEEE;
+    box-shadow: none;
 }
 
 .textarea {

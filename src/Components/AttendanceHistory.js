@@ -12,7 +12,7 @@ export default ({data, type}) => {
             <AbsenHistoryItem
                 key={key}
                 index={index++}
-                data={data[key]}
+                data={{...data[key], key}}
             />
         )
     }
@@ -27,7 +27,7 @@ export default ({data, type}) => {
                         <td>{type === 'date' ? 'TANGGAL' : 'NAMA'}</td>
                         <td className={tableStyle.center}>MASUK</td>
                         <td className={tableStyle.center}>PULANG</td>
-                        <td className={tableStyle.center}>CEMILAN</td>
+                        <td className={tableStyle.duration}>DURASI</td>
                         <td className={tableStyle.padding}>&nbsp;</td>
                     </tr>
                     </thead>

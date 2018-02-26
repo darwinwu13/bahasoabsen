@@ -6,7 +6,7 @@ const ExtractText = require('extract-text-webpack-plugin')
 module.exports = {
     entry: {
         bundle: './src/index',
-        vendor: ['react', 'react-dom', 'firebase']
+        vendor: ['react', 'react-dom', 'firebase', 'gsap']
     },
     output: {
         filename: '[chunkhash:10].js',
@@ -53,6 +53,9 @@ module.exports = {
                 ]
             }
         ]
+    },
+    externals: {
+        TweenLite: 'TweenLite'
     },
     plugins: [
         new ExtractText('[contenthash:10].css'),

@@ -57,6 +57,9 @@ module.exports = {
             favicon: 'src/Images/logo.png'
         })
     ],
+    externals: {
+        TweenLite: 'TweenLite'
+    },
     devServer: {
         historyApiFallback: true
     }

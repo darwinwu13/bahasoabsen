@@ -27,16 +27,29 @@ export const getDateWithFormat = string => {
     return `${getDayName(day).toUpperCase()} (${getDigitWithZero(date)}/${getDigitWithZero(month)})`
 }
 
-export const getLateCount = time => {
-    const hm = time.split(':')
-    const hour = hm[0]
-    const minute = hm[1]
+export const getDuration = (from, to) => {
+    const fromHour = parseInt(from.substr(0, 2))
+    const fromMin = parseInt(from.substr(3, 2))
+    const toHour = parseInt(to.substr(0, 2))
+    const toMin = parseInt(to.substr(3, 2))
 
-    if(hm[1] === '00') {
-        return hm[0] - 10
+    let diffHour = toHour - fromHour
+    let diffMin = toMin - fromMin
+
+    if(diffMin < 0) {
+        diffHour -= 1
+        diffMin += 60
     }
 
-    return hm[0] - 9
+    if(diffHour < 0) {
+        diffHour += 24
+    }
+
+    let result = ''
+    if(diffHour) result += diffHour + 'h'
+    if(diffMin) result += ' ' + diffMin + 'm'
+
+    return result ? result : '-'
 }
 
 export const getDigitWithZero = number => ('0' + number).slice(-2)

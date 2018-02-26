@@ -33,7 +33,6 @@ class App extends React.Component {
             <div>
                 <UserRoute exact path="/" component={() => <Home user={this.state.user}/>}/>
                 <UserRoute exact path="/home" component={() => <Home user={this.state.user}/>}/>
-                <UserRoute exact path="/history" component={History}/>
                 <GuestRoute exact path="/login" component={Login}/>
             </div>
         )
