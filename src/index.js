@@ -15,14 +15,7 @@ const prodConfig = {
     messagingSenderId: "456426625754"
 }
 
-const devConfig = {
-    apiKey: "AIzaSyBy6ff_NDaYxwRK5M6rlvojzmZnfBzGfCI",
-    authDomain: "fir-bahaso.firebaseapp.com",
-    databaseURL: "https://fir-bahaso.firebaseio.com",
-    projectId: "fir-bahaso",
-    storageBucket: "fir-bahaso.appspot.com",
-    messagingSenderId: "134825814680"
-}
+const devConfig = {}
 
 firebase.initializeApp(prodConfig)
 

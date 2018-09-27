@@ -1,7 +1,6 @@
 import React from 'react'
 
 import {getDigitWithZero, getDayName, getMonthName, getStringClock, getDuration} from '../../Utils/time'
-import {getTheme} from '../../Utils/theme'
 import style from './style.css'
 
 class Today extends React.Component {
@@ -28,7 +27,6 @@ class Today extends React.Component {
     }
 
     render() {
-        const theme = getTheme()
         const now = new Date(this.state.now)
         const {workTime} = this.props
         const day = getDayName(now.getDay())
@@ -52,7 +50,7 @@ class Today extends React.Component {
                     <div>{ day }</div>
                     <div>{ date }</div>
                 </div>
-                <div className={style.time + ' ' + style[theme]}>
+                <div className={style.time}>
                     {time}
                     <span className={style.second}>{second}</span>
                 </div>

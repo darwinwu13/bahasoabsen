@@ -20,14 +20,6 @@
     line-height: 1;
 }
 
-.asiangames {
-    width: 260px;
-}
-
-.merdeka {
-    width: 180px;
-}
-
 .btn {
     min-width: 250px;
     margin-top: 50px;
@@ -39,10 +31,4 @@
     box-shadow: 0 2px 2px rgba(0, 0, 0, .25);
     font-size: 16px;
     cursor: pointer;
-}
-
-.btn.merdeka {
-    background-color: #DA1F26;
-    border-radius: 0;
-    box-shadow: none;
 }

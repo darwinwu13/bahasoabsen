@@ -2,13 +2,11 @@ import React from 'react'
 
 import Quote from '../Quote'
 import Today from '../Today'
-import AsianGames from '../Theme/AsianGames'
 
 import {getStringClock} from '../../Utils/time'
 import {quotes} from '../../Utils/quotes'
 
 import style from './style.css'
-import {getTheme} from '../../Utils/theme'
 
 class AttendanceForm extends React.Component {
     state = {
@@ -47,7 +45,7 @@ class AttendanceForm extends React.Component {
         return <Quote quote={quote}/>
     }
 
-    renderNote = theme => {
+    renderNote = () => {
         const {present} = this.props
         const {quote, note} = this.state
         const isWorking = this.getWorkingStatus()
@@ -58,7 +56,7 @@ class AttendanceForm extends React.Component {
 
         return <div>
             <textarea
-                className={style.textarea + ' ' + style[theme]}
+                className={style.textarea}
                 rows="4"
                 placeholder="Isi keterangan izin/sakit..."
                 value={note}
@@ -75,21 +73,19 @@ class AttendanceForm extends React.Component {
     }
 
     render() {
-        const theme = getTheme()
         const {quote} = this.state
         const {present, workTime} = this.props
         const isWorking = this.getWorkingStatus()
 
         return (
             <section>
-                <div className={style.container + ' ' + style[theme]} style={quote ? {height: '550px'} : (!present && !isWorking) ? {height: '505px'} : {}}>
-                    {theme === 'asiangames' && <AsianGames />}
+                <div className={style.container} style={quote ? {height: '550px'} : (!present && !isWorking) ? {height: '505px'} : {}}>
                     <Today workTime={workTime}/>
                     {this.renderQuote()}
-                    {this.renderNote(theme)}
+                    {this.renderNote()}
                 </div>
                 <div className={style.btnContainer}>
-                    <button className={style.btn + ' ' + style[theme]} onClick={this.onClick} disabled={!workTime || (!present && !isWorking && !this.state.note)}>
+                    <button className={style.btn} onClick={this.onClick} disabled={!workTime || (!present && !isWorking && !this.state.note)}>
                     {isWorking ? 'pulang' : present ? 'masuk' : 'i z i n'}
                     </button>
                 </div>
