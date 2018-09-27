@@ -1,7 +1,6 @@
 import React from 'react'
 import * as firebase from 'firebase'
 
-import Header from '../Components/Header'
 import Footer from '../Components/Footer'
 import AttendanceForm from '../Components/AttendanceForm'
 import AttendanceHistory from '../Components/AttendanceHistory'
@@ -157,7 +156,6 @@ class Home extends React.Component {
 
         return (
             <div>
-                <Header name={displayName} photo={photoURL}/>
                 <main className={style.container}>
                     <AttendanceForm workTime={workTime} absen={this.absen} present={present}/>
                     <AttendanceHistoryForm onSubmit={this.onSubmit} users={this.state.users}/>

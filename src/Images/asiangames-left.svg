@@ -1,0 +1,24 @@
+<svg width="171" height="290" viewBox="0 0 171 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="171" height="290" fill="black" fill-opacity="0"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="171" height="290">
+<rect width="171" height="290" fill="#C4C4C4"/>
+</mask>
+<g mask="url(#mask0)">
+<rect width="151.755" height="216.131" fill="black" fill-opacity="0" transform="translate(-41.0631 55.7552)"/>
+<g style="mix-blend-mode:multiply">
+<path d="M-3.9707 132.719L83.3413 194.922L73.4195 219.171L-3.9707 210.737V132.719Z" fill="#FFD530"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M-9.75647 96.8729L55.4646 159.604L43.3672 170.674L-29.2176 155.387L-9.75647 96.8729Z" fill="#8BC751"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M47.6503 80.1345L67.2266 127.679L52.6858 137.603L14.7567 107.03L47.6503 80.1345Z" fill="#2B93D1"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M-3.9707 193.868L102.892 216.009L110.692 233.932L-3.9707 271.886V193.868Z" fill="#EF4664"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M-3.9707 55.7552L71.4751 148.646L67.8861 160.724L-17.1201 120.067L-3.9707 55.7552Z" fill="#793393"/>
+</g>
+</g>
+</svg>

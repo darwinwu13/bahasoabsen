@@ -2,7 +2,7 @@ import React from 'react'
 import { TweenMax } from 'gsap'
 import '../../svg'
 
-import style from './style.css'
+import style from './valentinecard.css'
 
 class ValentineCard extends React.Component {
     componentDidMount() {

@@ -2,3 +2,5 @@
 .firebaserc
 node_modules
 build
+.firebase
+

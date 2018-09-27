@@ -1,0 +1,24 @@
+<svg width="172" height="293" viewBox="0 0 172 293" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="172" height="293" fill="black" fill-opacity="0" transform="translate(172 293) rotate(-180)"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="173" height="293">
+<rect x="172" y="293" width="172" height="293" transform="rotate(-180 172 293)" fill="#C4C4C4"/>
+</mask>
+<g mask="url(#mask0)">
+<rect width="216.55" height="283.907" fill="black" fill-opacity="0" transform="translate(266.678 266.731) rotate(-180)"/>
+<g style="mix-blend-mode:multiply">
+<path d="M211.229 169.23L98.4739 111.138L111.239 86.6867L190.757 70.3941L211.229 169.23Z" fill="#FFD530"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M227.937 213.122L129.155 150.783L141.52 133.581L237.147 133.883L227.937 213.122Z" fill="#8BC751"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M159.871 249.405L122.686 194.316L138.435 177.924L194.332 206.694L159.871 249.405Z" fill="#2B93D1"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M215.327 81.6605L74.636 81.6806L60.0876 61.0238L194.855 -17.1758L215.327 81.6605Z" fill="#EF4664"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M231.424 266.731L111.822 168.87L113.183 152.626L231.146 181.804L231.424 266.731Z" fill="#793393"/>
+</g>
+</g>
+</svg>

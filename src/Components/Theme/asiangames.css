@@ -1,0 +1,84 @@
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+}
+
+.panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background: white;
+    border: 1px solid #EAEAEA;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px rgba(192, 192, 192, .1);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: border-color .2s;
+}
+
+.panel:hover {
+    border-color: #23ABFA;
+}
+
+.panel-left {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.panel-right {
+    display: flex;
+    align-content: center;
+    padding-left: 60px;
+    padding-right: 15px;
+}
+
+.bahaso {
+    height: 20px;
+}
+
+.asiangames {
+    height: 40px;
+}
+
+.text {
+    display: inline-block;
+    padding: 0 15px;
+    color: #A0A0A0;
+}
+
+.button {
+    color: #23ABFA;
+}
+
+@media (max-width: 500px)  {
+    .panel-right {
+        display: none;
+    }
+
+    .panel-left {
+        flex: 1;
+    }
+}
+
+@media (max-width: 400px)  {
+    .panel-right {
+        display: flex;
+    }
+
+    .panel-left {
+        flex: auto;
+        justify-content: flex-start;
+    }
+
+    .bahaso, .text {
+        display: none;
+    }
+}

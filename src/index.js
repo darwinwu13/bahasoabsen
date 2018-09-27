@@ -14,6 +14,7 @@ const prodConfig = {
     storageBucket: "bahaso-absen.appspot.com",
     messagingSenderId: "456426625754"
 }
+
 const devConfig = {
     apiKey: "AIzaSyBy6ff_NDaYxwRK5M6rlvojzmZnfBzGfCI",
     authDomain: "fir-bahaso.firebaseapp.com",

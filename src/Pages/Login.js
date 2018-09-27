@@ -1,7 +1,9 @@
 import React from 'react'
 import * as firebase from 'firebase'
 
-import { isValentine } from '../Utils/theme'
+import merdeka from '../Images/merdeka.png'
+import asiangames from '../Images/asiangames.svg'
+import {getTheme} from '../Utils/theme'
 
 import style from '../Styles/login.css'
 
@@ -21,13 +23,23 @@ class Login extends React.Component {
     }
 
     render() {
+        const theme = getTheme()
+
         return (
-            <div className={style.container + ' ' + (isValentine() ? (' ' + style.valentine) : '')}>
-                <div>
-                    <div className={style.bahaso + ' ' + (isValentine() ? (' ' + style.valentine) : '')}>bahaso</div>
-                    <div className={style.absen + ' ' + (isValentine() ? (' ' + style.valentine) : '')}>ABSEN</div>
-                    <div><button className={style.btn + ' ' + (isValentine() ? (' ' + style.valentine) : '')} onClick={this.login}>Sign in with Google</button></div>
-                </div>
+            <div className={style.container}>
+                {theme === 'notheme' && <div>
+                    <div className={style.bahaso}>bahaso</div>
+                    <div className={style.absen}>ABSEN</div>
+                    <div><button className={style.btn} onClick={this.login}>Sign in with Google</button></div>
+                </div>}
+                {theme === 'asiangames' && <div>
+                    <img className={style.asiangames} src={asiangames} alt="Asian Games" />
+                    <div><button className={style.btn} onClick={this.login}>Sign in with Google</button></div>
+                </div>}
+                {theme === 'merdeka' && <div>
+                    <img className={style.merdeka} src={merdeka} alt="Bahaso Absen" />
+                    <div><button className={style.btn + ' ' + style.merdeka} onClick={this.login}>Sign in with Google</button></div>
+                </div>}
             </div>
         )
     }

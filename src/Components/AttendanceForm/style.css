@@ -1,11 +1,26 @@
 .container {
+    position: relative;
     text-align: center;
     background-color: #FFF;
     box-shadow: 0 4px 4px rgba(194,194,194,.5);
-    padding: 30px 10px 70px;
-    height: 340px;
+    padding: 100px 10px 70px;
+    height: 420px;
     -webkit-transition: all .3s;
     transition: all .3s;
+}
+
+.container.merdeka {
+    background-image: url('../../Images/bg-merdeka.png');
+    background-size: contain;
+    background-position: center right;
+    background-repeat: no-repeat
+}
+
+.container.asiangames {
+    background-image: url('../../Images/asiangames-left.png'), url('../../Images/asiangames-right.png');
+    background-size: contain;
+    background-position: left, right;
+    background-repeat: no-repeat;
 }
 
 .btn-container {
@@ -33,6 +48,12 @@
     transform: translate(-50%, -50%);
 }
 
+.btn.merdeka {
+    background: #DA1F26;
+    box-shadow: none;
+    border-radius: 0;
+}
+
 .btn:disabled {
     color: #E0E0E0;
     background: #EEEEEE;
@@ -45,6 +66,7 @@
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    box-shadow: none;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     resize: none;
@@ -54,6 +76,10 @@
     border-color: #E54848;
     position: relative;
     z-index: 2;
+}
+
+.textarea.merdeka {
+    border-radius: 0;
 }
 
 .overlay {

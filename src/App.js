@@ -3,7 +3,6 @@ import * as firebase from 'firebase'
 
 import Home from './Pages/Home'
 import Login from './Pages/Login'
-import History from './Pages/History'
 import Splash from './Pages/Splash'
 import UserRoute from './Routes/UserRoute'
 import GuestRoute from './Routes/GuestRoute'
